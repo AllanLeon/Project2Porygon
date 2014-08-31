@@ -59,4 +59,35 @@ public class TransformationManager {
 		}
 		return toHomogeneousCoordinates(res);
 	}
+	
+	public static int[][] scaling3D(int[] axis, int k) {
+		int[][] res = new int[3][3];
+		if (axis.length == 3) {
+			int nx = axis[0];
+			int ny = axis[1];
+			int nz = axis[2];
+			res[0][0] = 1 + (k - 1)*nx*nx; 
+			res[1][0] = (k - 1)*nx*ny;
+			res[2][0] = (k - 1)*nx*nz;
+			
+			res[0][1] = (k - 1)*nx*ny; 
+			res[1][1] = 1 + (k - 1)*ny*ny;
+			res[2][1] = (k - 1)*ny*nz;
+			
+			res[0][2] = (k - 1)*nx*nz; 
+			res[1][2] = (k - 1)*ny*nz;
+			res[2][2] = 1 + (k - 1)*nz*nz;
+		}
+		return toHomogeneousCoordinates(res);
+	}
+	
+	public static int[][] translation3D(int dx, int dy, int dz) {
+		int[][] res = new int[][]{
+				{ 1, 0, 0, 0 },
+				{ 0, 1, 0, 0 },
+				{ 0, 0, 1, 0 },
+				{ dx, dy, dz, 1 }
+		};
+		return res;
+	}
 }
