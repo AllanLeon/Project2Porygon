@@ -20,7 +20,7 @@ public class TransformationManager {
 		return res;
 	}
 	
-	private static int[][] toHomogeneousCoordinates(int[][] m) {
+	public static int[][] toHomogeneousCoordinates(int[][] m) {
 		int mRows = m.length;
 		int mColumns = m[0].length;
 		int res[][] = new int[mRows + 1][mColumns + 1];
