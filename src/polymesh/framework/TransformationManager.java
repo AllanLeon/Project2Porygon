@@ -90,4 +90,18 @@ public class TransformationManager {
 		};
 		return res;
 	}
+	
+	public static int[][] orthographicProjection3D(int[] axis) {
+		return scaling3D(axis, 0);
+	}
+	
+	public static int[][] perspectiveProjectionXY3D(int d) {
+		int[][] res = new int[][]{
+				{ 1, 0, 0, 0 },
+				{ 0, 1, 0, 0 },
+				{ 0, 0, 1, Math.round(1/d) },
+				{ 0, 0, 0, 0 }
+		};
+		return res;
+	}
 }
