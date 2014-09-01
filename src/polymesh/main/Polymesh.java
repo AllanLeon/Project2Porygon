@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Polymesh {
 
-	private ArrayList<Edge> edges; 
-	private ArrayList<Point> points;
+	private ArrayList<Polygon> polygons;
 	
 	public Polymesh() {
 		
 	}
+	
 }
