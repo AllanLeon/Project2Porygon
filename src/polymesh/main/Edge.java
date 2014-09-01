@@ -18,6 +18,12 @@ public class Edge {
 		this.finalPoint.setY(y1);
 		this.finalPoint.setZ(z1);
 	}
+
+	public Edge(Point A, Point B) {
+		this.initPoint = A;
+		this.finalPoint = B;
+	}
+
 	
 	public void draw(Graphics g) {
 		Drawer.drawLine(g, initPoint.getX(), initPoint.getY(), finalPoint.getX(),

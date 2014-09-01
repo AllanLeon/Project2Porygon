@@ -1,6 +1,8 @@
 package polymesh.main;
+
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -82,8 +84,21 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 		botSPanel.setBackground(Color.BLACK);
 
 		doubleBuffer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+		paint();
 	}	
 	
+	private void paint() {
+		Graphics dbg = doubleBuffer.getGraphics();
+		dbg.setColor(Color.BLACK);
+		dbg.fillRect(0, 0, WIDTH, HEIGHT);
+		Point A = new Point(100,100,100);
+		Point B = new Point(200,200,200);
+		Edge ed = new Edge(A, B);
+		// Edge ed = new Edge(110,110,110,110,110,110);
+		ed.draw(dbg);	
+	}
+
+
 	/**
 	 * {@inheritDoc}
 	 */
