@@ -6,12 +6,20 @@ public class Point {
 	private int y;
 	private int z;
 	private int w;
+	private int[] perspectiveProjection;
+	private int[] frontalProjection;
+	private int[] sideProjection;
+	private int[] topProjection;
 
 	public Point(int x, int y, int z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.w = 1;
+		this.perspectiveProjection = new int[4];
+		this.frontalProjection = new int[4];
+		this.sideProjection = new int[4];
+		this.topProjection = new int[4];
 	}
 	
 	public int getX() {
@@ -28,6 +36,22 @@ public class Point {
 	
 	public int getW() {
 		return w;
+	}
+
+	public int[] getPerspectiveProjection() {
+		return perspectiveProjection;
+	}
+
+	public int[] getFrontalProjection() {
+		return frontalProjection;
+	}
+
+	public int[] getSideProjection() {
+		return sideProjection;
+	}
+
+	public int[] getTopProjection() {
+		return topProjection;
 	}
 
 	public void setX(int x) {
@@ -49,5 +73,9 @@ public class Point {
 			z /= w;
 			w /= w;
 		}
+	}
+	
+	private void updatePerspectiveProjection() {
+		
 	}
 }
