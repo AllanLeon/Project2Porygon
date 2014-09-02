@@ -1,17 +1,23 @@
 package polymesh.main;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
-
-import polymesh.framework.Drawer;
+import java.util.List;
 
 public class Polymesh {
 
-	private ArrayList<Polygon> polygons;
+	private List<Polygon> polygons;
 	
-	public Polymesh(Graphics g) {
-		draw(g);
+	public Polymesh() {
+		polygons = new ArrayList<Polygon>();
+	}
+	
+	public List<Polygon> getPolygons() {
+		return polygons;
+	}
+	
+	public void addPolygon(Polygon polygon) {
+		polygons.add(polygon);
 	}
 	
 	public void draw(Graphics g) {

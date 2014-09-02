@@ -11,12 +11,8 @@ public class Edge {
 	public Point finalPoint;
 	
 	public Edge(int x0, int y0, int z0, int x1, int y1, int z1) {
-		this.initPoint.setX(x0);
-		this.initPoint.setY(y0);
-		this.initPoint.setZ(z0);
-		this.finalPoint.setX(x1);
-		this.finalPoint.setY(y1);
-		this.finalPoint.setZ(z1);
+		this.initPoint = new Point(x0, y0, z0);
+		this.finalPoint = new Point(x1, y1, z1);
 	}
 
 	public Edge(Point A, Point B) {
