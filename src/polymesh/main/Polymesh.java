@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
+import polymesh.framework.TransformationManager;
+
 public class Polymesh {
 
 	private List<Polygon> polygons;
@@ -39,6 +41,10 @@ public class Polymesh {
 		return transformation;
 	}
 	
+	public static void updateTransformation(double[][] newTransf) {
+		transformation = TransformationManager.matrixMultiplication(transformation, newTransf);
+	}
+	
 	public void addPolygon(Polygon polygon) {
 		polygons.add(polygon);
 	}
@@ -52,8 +58,8 @@ public class Polymesh {
 	}
 	
 	public void draw(Graphics g) {
-		for (int i=0; i < polygons.size(); i++) {
-			polygons.get(i).draw(g);
+		for (int i=0; i < edges.size(); i++) {
+			edges.get(i).draw(g);
 		}
 	}
 }
