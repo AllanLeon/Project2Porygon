@@ -9,11 +9,18 @@ public class Polymesh {
 	private List<Polygon> polygons;
 	private List<Edge> edges;
 	private List<Point> corners;
+	private static double[][] transformation;
 	
 	public Polymesh() {
 		polygons = new ArrayList<Polygon>();
 		edges = new ArrayList<Edge>();
 		corners = new ArrayList<Point>();
+		transformation = new double[][]{
+				{ 1, 0, 0, 0 },
+				{ 0, 1, 0, 0 },
+				{ 0, 0, 1, 0 },
+				{ 0, 0, 0, 1 }
+		};
 	}
 	
 	public List<Polygon> getPolygons() {
@@ -26,6 +33,10 @@ public class Polymesh {
 	
 	public List<Polygon> getCorners() {
 		return polygons;
+	}
+	
+	public static double[][] getTransformation() {
+		return transformation;
 	}
 	
 	public void addPolygon(Polygon polygon) {

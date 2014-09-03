@@ -2,15 +2,9 @@ package polymesh.framework;
 
 public class TransformationManager {
 
-	public static final int[] xAxis = new int[]{
-		1, 0, 0
-	};
-	public static final int[] yAxis = new int[]{
-		0, 1, 0
-	};
-	public static final int[] zAxis = new int[]{
-		0, 0, 1
-	};
+	public static final double[] xAxis = new double[]{ 1, 0, 0 };
+	public static final double[] yAxis = new double[]{ 0, 1, 0 };
+	public static final double[] zAxis = new double[]{ 0, 0, 1 };
 	public static final int distance = 1;
 	
 	public static double[][] matrixMultiplication(double[][] m1, double[][] m2) {
@@ -113,6 +107,30 @@ public class TransformationManager {
 				{ 0, 0, 1, 1/d },
 				{ 0, 0, 0, 0 }
 		};
+		return res;
+	}
+	
+	public static double[][] convertIntToDoubleMatrix(int[][] m) {
+		int mRows = m.length;
+		int mColumns = m[0].length;
+		double[][] res = new double[mRows][mColumns];
+		for (int i = 0; i < mRows; i++) {
+			for (int j = 0; j < mColumns; j++) {
+				res[i][j] = m[i][j];
+			}
+		}
+		return res;
+	}
+	
+	public static int[][] convertDoubleToIntMatrix(double[][] m) {
+		int mRows = m.length;
+		int mColumns = m[0].length;
+		int[][] res = new int[mRows][mColumns];
+		for (int i = 0; i < mRows; i++) {
+			for (int j = 0; j < mColumns; j++) {
+				res[i][j] = (int) Math.round(m[i][j]);
+			}
+		}
 		return res;
 	}
 }

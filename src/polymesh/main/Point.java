@@ -1,25 +1,33 @@
 package polymesh.main;
 
+import polymesh.framework.TransformationManager;
+
 public class Point {
 
 	private int x;
 	private int y;
 	private int z;
 	private int w;
-	private int[] perspectiveProjection;
-	private int[] frontalProjection;
-	private int[] sideProjection;
-	private int[] topProjection;
+	private double[][] coordinates;
+	private double[][] transformedCoord;
+	private int[][] perspectiveProjection;
+	private int[][] frontalProjection;
+	private int[][] sideProjection;
+	private int[][] topProjection;
 
 	public Point(int x, int y, int z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.w = 1;
-		this.perspectiveProjection = new int[4];
-		this.frontalProjection = new int[4];
-		this.sideProjection = new int[4];
-		this.topProjection = new int[4];
+		this.coordinates = new double[][]{
+				{ x, y, z, 1 }
+		};
+		this.transformedCoord = new double [1][4];
+		this.perspectiveProjection = new int[1][4];
+		this.frontalProjection = new int[1][4];
+		this.sideProjection = new int[1][4];
+		this.topProjection = new int[1][4];
 	}
 	
 	public int getX() {
@@ -38,44 +46,85 @@ public class Point {
 		return w;
 	}
 
-	public int[] getPerspectiveProjection() {
+	public int[][] getPerspectiveProjection() {
 		return perspectiveProjection;
 	}
 
-	public int[] getFrontalProjection() {
+	public int[][] getFrontalProjection() {
 		return frontalProjection;
 	}
 
-	public int[] getSideProjection() {
+	public int[][] getSideProjection() {
 		return sideProjection;
 	}
 
-	public int[] getTopProjection() {
+	public int[][] getTopProjection() {
 		return topProjection;
 	}
 
 	public void setX(int x) {
 		this.x = x;
+		this.coordinates[0][0] = x;
 	}
 
 	public void setY(int y) {
 		this.y = y;
+		this.coordinates[0][1] = y;
 	}
 
 	public void setZ(int z) {
 		this.z = z;
+		this.coordinates[0][2] = z;
 	}
 	
-	public void checkW() {
-		if (w != 1) {
-			x /= w;
-			y /= w;
-			z /= w;
-			w /= w;
+	public void checkW(double[][] coord) {
+		if (coord[0][3] != 1) {
+			coord[0][0] /= coord[0][3];
+			coord[0][1] /= coord[0][3];
+			coord[0][2] /= coord[0][3];
+			coord[0][3] /= coord[0][3];
 		}
 	}
 	
+	public void update() {
+		applyTransformation();
+		updatePerspectiveProjection();
+		updateFrontalProjection();
+		updateSideProjection();
+		updateTopProjection();
+	}
+	
+	private void applyTransformation() {
+		transformedCoord = TransformationManager.matrixMultiplication(coordinates,
+				Polymesh.getTransformation());
+		checkW(transformedCoord);
+	}
+	
 	private void updatePerspectiveProjection() {
-		
+		double[][] projection = TransformationManager.matrixMultiplication(transformedCoord,
+				TransformationManager.perspectiveProjectionXY3D(TransformationManager.distance));
+		checkW(projection);
+		perspectiveProjection = TransformationManager.convertDoubleToIntMatrix(projection);
+	}
+	
+	private void updateFrontalProjection() {
+		double[][] projection = TransformationManager.matrixMultiplication(transformedCoord,
+				TransformationManager.orthographicProjection3D(TransformationManager.zAxis));
+		checkW(projection);
+		frontalProjection = TransformationManager.convertDoubleToIntMatrix(projection);
+	}
+	
+	private void updateSideProjection() {
+		double[][] projection = TransformationManager.matrixMultiplication(transformedCoord,
+				TransformationManager.orthographicProjection3D(TransformationManager.xAxis));
+		checkW(projection);
+		sideProjection = TransformationManager.convertDoubleToIntMatrix(projection);
+	}
+	
+	private void updateTopProjection() {
+		double[][] projection = TransformationManager.matrixMultiplication(transformedCoord,
+				TransformationManager.orthographicProjection3D(TransformationManager.yAxis));
+		checkW(projection);
+		topProjection = TransformationManager.convertDoubleToIntMatrix(projection);
 	}
 }
