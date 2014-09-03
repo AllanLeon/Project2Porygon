@@ -11,20 +11,30 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  * Main JFrame of the application
  */
 public class Main extends JFrame implements KeyListener, ActionListener {
 		
+	enum State {
+		Waiting, Drawing
+	}
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private static final int WIDTH = 800;
 	private static final int HEIGHT = 600;
+	
+	private JPanel princPanel;
+	private JPanel topSPanel;
+	private JPanel midSPanel;
+	private JPanel botSPanel;
 	private BufferedImage doubleBuffer;
-
+	private Polymesh porygon;
+	private State state;
 
 	/**
 	 * Launch the application.
@@ -62,42 +72,98 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
-		JPanel princPanel = new JPanel();
+		princPanel = new JPanel();
 		princPanel.setBounds(10, 10, 550, 550);
 		getContentPane().add(princPanel);
 		princPanel.setBackground(Color.BLACK);
 
-		JPanel topSPanel = new JPanel();
+		topSPanel = new JPanel();
 		topSPanel.setBounds(570, 10, 180, 180);
 		getContentPane().add(topSPanel);
 		topSPanel.setBackground(Color.BLACK);
 		topSPanel.setOpaque(true);
 
-		JPanel midSPanel = new JPanel();
+		midSPanel = new JPanel();
 		midSPanel.setBounds(570, 195, 180, 180);
 		getContentPane().add(midSPanel);
 		midSPanel.setBackground(Color.BLACK);
 
-		JPanel botSPanel = new JPanel();
+		botSPanel = new JPanel();
 		botSPanel.setBounds(570, 380, 180, 180);
 		getContentPane().add(botSPanel);
 		botSPanel.setBackground(Color.BLACK);
 
 		doubleBuffer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-		paint();
+		initializePorygon();
+		start();
 	}	
 	
-	private void paint() {
-		Graphics dbg = doubleBuffer.getGraphics();
-		dbg.setColor(Color.BLACK);
-		dbg.fillRect(0, 0, WIDTH, HEIGHT);
-		Point A = new Point(100,100,100);
-		Point B = new Point(200,200,200);
-		Edge ed = new Edge(A, B);
-		// Edge ed = new Edge(110,110,110,110,110,110);
-		ed.draw(dbg);	
+	private void initializePorygon() {
+		porygon = new Polymesh();
+		Point p1 = new Point(150, 500, 1);
+		Point p2 = new Point(200, 200, 1);
+		Edge e1 = new Edge(p1, p2);
+		porygon.addCorner(p1);
+		porygon.addCorner(p2);
+		porygon.addEdge(e1);
+		
+	}
+	
+	private void start() {
+		state = State.Drawing;
+		Timer timer = new Timer(1000/60, this);
+		timer.start();
 	}
 
+	private void paint() {
+		Graphics dbg = doubleBuffer.getGraphics();
+		paintPerspective(dbg);
+		paintFrontal(dbg);
+		paintSide(dbg);
+		paintTop(dbg);
+		state = State.Waiting;
+	}
+	
+	private void paintPerspective(Graphics dbg) {
+		dbg.setColor(Color.BLACK);
+		dbg.fillRect(0, 0, WIDTH, HEIGHT);
+		porygon.drawPerspective(dbg);
+		princPanel.getGraphics().drawImage(doubleBuffer, 0, 0, this);
+	}
+	
+	private void paintFrontal(Graphics dbg) {
+		dbg.setColor(Color.BLACK);
+		dbg.fillRect(0, 0, WIDTH, HEIGHT);
+		porygon.drawFrontal(dbg);
+		topSPanel.getGraphics().drawImage(doubleBuffer, 0, 0, this);
+	}
+	
+	private void paintSide(Graphics dbg) {
+		dbg.setColor(Color.BLACK);
+		dbg.fillRect(0, 0, WIDTH, HEIGHT);
+		porygon.drawSide(dbg);
+		midSPanel.getGraphics().drawImage(doubleBuffer, 0, 0, this);
+	}
+	
+	private void paintTop(Graphics dbg) {
+		dbg.setColor(Color.BLACK);
+		dbg.fillRect(0, 0, WIDTH, HEIGHT);
+		porygon.drawTop(dbg);
+		botSPanel.getGraphics().drawImage(doubleBuffer, 0, 0, this);
+	}
+	
+	private void run() {
+		if (state == State.Drawing) {
+			paint();
+		}
+	}
+	
+	@Override
+	public void update(Graphics g) {}
+
+	
+	@Override
+	public void paint(Graphics g) {}
 
 	/**
 	 * {@inheritDoc}
@@ -182,6 +248,6 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
+		run();
 	}
 }

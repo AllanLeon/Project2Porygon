@@ -62,4 +62,28 @@ public class Polymesh {
 			edges.get(i).draw(g);
 		}
 	}
+	
+	public void drawPerspective(Graphics g) {
+		for (int i=0; i < edges.size(); i++) {
+			edges.get(i).drawPerspective(g);
+		}
+	}
+	
+	public void drawFrontal(Graphics g) {
+		for (int i=0; i < edges.size(); i++) {
+			edges.get(i).drawFrontal(g);
+		}
+	}
+	
+	public void drawSide(Graphics g) {
+		for (int i=0; i < edges.size(); i++) {
+			edges.get(i).drawSide(g);
+		}
+	}
+	
+	public void drawTop(Graphics g) {
+		for (int i=0; i < edges.size(); i++) {
+			edges.get(i).drawTop(g);
+		}
+	}
 }
