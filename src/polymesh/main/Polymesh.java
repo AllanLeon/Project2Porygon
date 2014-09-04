@@ -1,10 +1,7 @@
 package polymesh.main;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
-
-import polymesh.framework.Drawer;
 
 public class Polymesh {
 
