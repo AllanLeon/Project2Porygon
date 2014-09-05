@@ -1,23 +1,28 @@
 package polymesh.main;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
-
-import polymesh.framework.Drawer;
+import java.util.List;
 
 public class Polygon {
 
-	private ArrayList<Edge> edges;
+	private List<Edge> edges;
 	
-	public Polygon(Graphics g) {
-		draw(g);
+	public Polygon() {
+		edges = new ArrayList<Edge>();
+	}
+	
+	public List<Edge> getEdges() {
+		return edges;
+	}
+	
+	public void addEdge(Edge edge) {
+		edges.add(edge);
 	}
 	
 	public void draw(Graphics g) {
 		for (int i=0; i < edges.size(); i++) {
-			Drawer.drawLine(g, edges.get(i).initPoint.getX(), edges.get(i).initPoint.getY(),
-							edges.get(i).finalPoint.getY(), edges.get(i).finalPoint.getY(), Color.RED);
+			edges.get(i).draw(g);
 		}
 	}
 }
