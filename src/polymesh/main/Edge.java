@@ -22,7 +22,7 @@ public class Edge {
 
 	
 	public void draw(Graphics g) {
-		drawPerspective(g);
+		//drawPerspective(g);
 		//drawFrontal(g);
 		//drawSide(g);
 		//drawTop(g);
@@ -33,7 +33,7 @@ public class Edge {
 		int y0 = initPoint.getPerspectiveProjection()[0][1];
 		int x1 = finalPoint.getPerspectiveProjection()[0][0];
 		int y1 = finalPoint.getPerspectiveProjection()[0][1];
-		Drawer.drawLine(g, x0, y0, x1, y1, Color.CYAN);
+		Drawer.drawLine(g, x0 + Main.BIG_PANEL_WIDTH / 2, y0 + Main.BIG_PANEL_HEIGHT / 2, x1 + Main.BIG_PANEL_WIDTH / 2, y1 + Main.BIG_PANEL_HEIGHT / 2, Color.CYAN);
 	}
 	
 	public void drawFrontal(Graphics g) {
@@ -41,7 +41,7 @@ public class Edge {
 		int y0 = initPoint.getFrontalProjection()[0][1];
 		int x1 = finalPoint.getFrontalProjection()[0][0];
 		int y1 = finalPoint.getFrontalProjection()[0][1];
-		Drawer.drawLine(g, x0, y0, x1, y1, Color.CYAN);
+		Drawer.drawLine(g, x0 + Main.SMALL_PANEL_WIDTH / 2, y0 + Main.BIG_PANEL_HEIGHT - Main.SMALL_PANEL_HEIGHT / 2, x1 + Main.SMALL_PANEL_WIDTH / 2, y1 + Main.BIG_PANEL_HEIGHT - Main.SMALL_PANEL_HEIGHT / 2, Color.CYAN);
 	}
 	
 	public void drawSide(Graphics g) {
@@ -49,7 +49,7 @@ public class Edge {
 		int y0 = initPoint.getSideProjection()[0][1];
 		int x1 = finalPoint.getSideProjection()[0][2];
 		int y1 = finalPoint.getSideProjection()[0][1];
-		Drawer.drawLine(g, x0, y0, x1, y1, Color.CYAN);
+		Drawer.drawLine(g, x0 + Main.SMALL_PANEL_WIDTH / 2, y0 + Main.BIG_PANEL_HEIGHT - Main.SMALL_PANEL_HEIGHT / 2, x1 + Main.SMALL_PANEL_WIDTH / 2, y1 + Main.BIG_PANEL_HEIGHT - Main.SMALL_PANEL_HEIGHT / 2, Color.CYAN);
 	}
 	
 	public void drawTop(Graphics g) {
@@ -57,6 +57,6 @@ public class Edge {
 		int y0 = initPoint.getTopProjection()[0][2];
 		int x1 = finalPoint.getTopProjection()[0][0];
 		int y1 = finalPoint.getTopProjection()[0][2];
-		Drawer.drawLine(g, x0, y0, x1, y1, Color.CYAN);
+		Drawer.drawLine(g, x0 + Main.SMALL_PANEL_WIDTH / 2, y0 + Main.BIG_PANEL_HEIGHT - Main.SMALL_PANEL_HEIGHT / 2, x1 + Main.SMALL_PANEL_WIDTH / 2, y1 + Main.BIG_PANEL_HEIGHT - Main.SMALL_PANEL_HEIGHT / 2, Color.CYAN);
 	}
 }

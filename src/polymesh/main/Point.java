@@ -23,9 +23,7 @@ public class Point {
 		this.coordinates = new double[][]{
 				{ x, y, z, 1 }
 		};
-		this.transformedCoord = new double[][]{
-				{ x, y, z, 1 }
-		};
+		this.transformedCoord = coordinates;
 		this.perspectiveProjection = new int[1][4];
 		this.frontalProjection = new int[1][4];
 		this.sideProjection = new int[1][4];
@@ -84,7 +82,9 @@ public class Point {
 	}
 	
 	public void checkW(double[][] coord) {
-		if (coord[0][3] != 1) {
+		if (coord[0][3] == 0) {
+			coord[0][3] = 1;
+		} else if (coord[0][3] != 1) {
 			coord[0][0] /= coord[0][3];
 			coord[0][1] /= coord[0][3];
 			coord[0][2] /= coord[0][3];
@@ -110,22 +110,18 @@ public class Point {
 		double[][] projection = TransformationManager.matrixMultiplication(transformedCoord,
 				TransformationManager.perspectiveProjectionXY3D(TransformationManager.distance));
 		checkW(projection);
+		System.out.println(projection[0][0]+" "+projection[0][1]+" "+projection[0][2]+" "+projection[0][3]);
 		perspectiveProjection = TransformationManager.convertDoubleToIntMatrix(projection);
 	}
 	
 	private void updateFrontalProjection() {
 		double[][] projection = TransformationManager.matrixMultiplication(transformedCoord,
 				TransformationManager.orthographicProjection3D(TransformationManager.zAxis));
-		/*projection = TransformationManager.matrixMultiplication(projection,
-				TransformationManager.scaling3D(TransformationManager.xzAxis,
-						TransformationManager.scale));*/
 		projection = TransformationManager.matrixMultiplication(projection,
-				TransformationManager.scaling3D(TransformationManager.xAxis,
-						TransformationManager.scale));
-		projection = TransformationManager.matrixMultiplication(projection,
-				TransformationManager.scaling3D(TransformationManager.yAxis,
-						TransformationManager.scale));
+				TransformationManager.scaling3D(TransformationManager.scale,
+						TransformationManager.scale, TransformationManager.scale));
 		checkW(projection);
+		System.out.println(projection[0][0]+" "+projection[0][1]+" "+projection[0][2]+" "+projection[0][3]);
 		frontalProjection = TransformationManager.convertDoubleToIntMatrix(projection);
 	}
 	
@@ -133,8 +129,8 @@ public class Point {
 		double[][] projection = TransformationManager.matrixMultiplication(transformedCoord,
 				TransformationManager.orthographicProjection3D(TransformationManager.xAxis));
 		projection = TransformationManager.matrixMultiplication(projection,
-				TransformationManager.scaling3D(TransformationManager.xAxis,
-						TransformationManager.scale));
+				TransformationManager.scaling3D(TransformationManager.scale,
+						TransformationManager.scale, TransformationManager.scale));
 		checkW(projection);
 		sideProjection = TransformationManager.convertDoubleToIntMatrix(projection);
 	}
@@ -143,8 +139,8 @@ public class Point {
 		double[][] projection = TransformationManager.matrixMultiplication(transformedCoord,
 				TransformationManager.orthographicProjection3D(TransformationManager.yAxis));
 		projection = TransformationManager.matrixMultiplication(projection,
-				TransformationManager.scaling3D(TransformationManager.yAxis,
-						TransformationManager.scale));
+				TransformationManager.scaling3D(TransformationManager.scale,
+						TransformationManager.scale, TransformationManager.scale));
 		checkW(projection);
 		topProjection = TransformationManager.convertDoubleToIntMatrix(projection);
 	}

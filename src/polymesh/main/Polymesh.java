@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import polymesh.framework.TransformationManager;
+import polymesh.main.Main.State;
 
 public class Polymesh {
 
@@ -41,8 +42,12 @@ public class Polymesh {
 		return transformation;
 	}
 	
-	public static void updateTransformation(double[][] newTransf) {
+	public void updateTransformation(double[][] newTransf) {
 		transformation = TransformationManager.matrixMultiplication(transformation, newTransf);
+		for(int i = 0; i < corners.size(); i++) {
+			corners.get(i).update();
+		}
+		Main.state = State.Drawing;
 	}
 	
 	public void addPolygon(Polygon polygon) {

@@ -8,8 +8,8 @@ public class TransformationManager {
 	public static final double[] xyAxis = new double[]{ 0.7071, 0.7071, 0 };
 	public static final double[] xzAxis = new double[]{ 0.7071, 0, 0.7071 };
 	public static final double[] yzAxis = new double[]{ 0, 0.7071, 0.7071 };
-	public static final double scale = 180/550;
-	public static final int distance = 1;
+	public static final double scale = 0.7;
+	public static final double distance = 100;
 	
 	public static double[][] matrixMultiplication(double[][] m1, double[][] m2) {
 		int m1Rows = m1.length;
@@ -69,7 +69,7 @@ public class TransformationManager {
 		return toHomogeneousCoordinates(res);
 	}
 	
-	public static double[][] scaling3D(double[] axis, double k) {
+	public static double[][] scaling3DAnyAxis(double[] axis, double k) {
 		double[][] res = new double[3][3];
 		if (axis.length == 3) {
 			double nx = axis[0];
@@ -90,7 +90,17 @@ public class TransformationManager {
 		return toHomogeneousCoordinates(res);
 	}
 	
-	public static double[][] translation3D(int dx, int dy, int dz) {
+	public static double[][] scaling3D(double sx, double sy, double sz) {
+		double[][] res = new double[][]{
+				{ sx, 0, 0, 0 },
+				{ 0, sy, 0, 0 },
+				{ 0, 0, sz, 0 },
+				{ 0, 0, 0, 1 }
+		};
+		return res;
+	}
+	
+	public static double[][] translation3D(double dx, double dy, double dz) {
 		double[][] res = new double[][]{
 				{ 1, 0, 0, 0 },
 				{ 0, 1, 0, 0 },
@@ -101,10 +111,10 @@ public class TransformationManager {
 	}
 	
 	public static double[][] orthographicProjection3D(double[] axis) {
-		return scaling3D(axis, 0);
+		return scaling3DAnyAxis(axis, 0);
 	}
 	
-	public static double[][] perspectiveProjectionXY3D(int d) {
+	public static double[][] perspectiveProjectionXY3D(double d) {
 		double[][] res = new double[][]{
 				{ 1, 0, 0, 0 },
 				{ 0, 1, 0, 0 },
