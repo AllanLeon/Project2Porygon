@@ -104,13 +104,14 @@ public class Point {
 		transformedCoord = TransformationManager.matrixMultiplication(coordinates,
 				Polymesh.getTransformation());
 		checkW(transformedCoord);
+		System.out.println(transformedCoord[0][0] + " " + transformedCoord[0][1] + " " + transformedCoord[0][2] + " " + transformedCoord[0][3]);
 	}
 	
 	private void updatePerspectiveProjection() {
 		double[][] projection = TransformationManager.matrixMultiplication(transformedCoord,
 				TransformationManager.perspectiveProjectionXY3D(TransformationManager.distance));
 		checkW(projection);
-		System.out.println(projection[0][0]+" "+projection[0][1]+" "+projection[0][2]+" "+projection[0][3]);
+		System.out.println(projection[0][0] + " " + projection[0][1] + " " + projection[0][2] + " " + projection[0][3]);
 		perspectiveProjection = TransformationManager.convertDoubleToIntMatrix(projection);
 	}
 	
@@ -121,7 +122,6 @@ public class Point {
 				TransformationManager.scaling3D(TransformationManager.scale,
 						TransformationManager.scale, TransformationManager.scale));
 		checkW(projection);
-		System.out.println(projection[0][0]+" "+projection[0][1]+" "+projection[0][2]+" "+projection[0][3]);
 		frontalProjection = TransformationManager.convertDoubleToIntMatrix(projection);
 	}
 	

@@ -220,13 +220,14 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 		switch (ke.getKeyCode()) {
 		//Rotates Porygon clockwise in z
 		case KeyEvent.VK_UP:
-			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.zAxis, 3));
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.zAxis, -Math.PI/18));
 			break;
 		//Rotates Porygon counter clockwise in z
 		case KeyEvent.VK_DOWN:
 			break;
 		//Rotates Porygon counter clockwise in x
 		case KeyEvent.VK_LEFT:
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.xAxis, -Math.PI/18));
 			break;
 		//Rotates Porygon clockwise in x 
 		case KeyEvent.VK_RIGHT:
