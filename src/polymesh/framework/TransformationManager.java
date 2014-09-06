@@ -9,7 +9,7 @@ public class TransformationManager {
 	public static final double[] xzAxis = new double[]{ 0.7071, 0, 0.7071 };
 	public static final double[] yzAxis = new double[]{ 0, 0.7071, 0.7071 };
 	public static final double scale = 0.7;
-	public static final double distance = 100;
+	public static final double distance = 50;
 	
 	public static double[][] matrixMultiplication(double[][] m1, double[][] m2) {
 		int m1Rows = m1.length;
@@ -53,7 +53,7 @@ public class TransformationManager {
 			double ny = axis[1];
 			double nz = axis[2];
 			double cos = Math.cos(angle);
-			double sin = Math.cos(angle);
+			double sin = Math.sin(angle);
 			res[0][0] = nx*nx*(1 - cos) + cos;
 			res[1][0] = nx*ny*(1 - cos) - nz*sin;
 			res[2][0] = nx*nz*(1 - cos) + ny*sin;
