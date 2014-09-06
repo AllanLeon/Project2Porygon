@@ -49,6 +49,10 @@ public class Point {
 	public int getW() {
 		return w;
 	}
+	
+	public double[][] getTransformedCoordinates() {
+		return transformedCoord;
+	}
 
 	public int[][] getPerspectiveProjection() {
 		return perspectiveProjection;
@@ -111,7 +115,7 @@ public class Point {
 		double[][] projection = TransformationManager.matrixMultiplication(transformedCoord,
 				TransformationManager.perspectiveProjectionXY3D(TransformationManager.distance));
 		checkW(projection);
-		System.out.println(projection[0][0] + " " + projection[0][1] + " " + projection[0][2] + " " + projection[0][3]);
+		//System.out.println(projection[0][0] + " " + projection[0][1] + " " + projection[0][2] + " " + projection[0][3]);
 		perspectiveProjection = TransformationManager.convertDoubleToIntMatrix(projection);
 	}
 	
