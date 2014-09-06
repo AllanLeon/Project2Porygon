@@ -40,6 +40,7 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 	private JPanel botSPanel;
 	private BufferedImage doubleBuffer;
 	private Polymesh porygon;
+	private boolean keyPressed;
 	public static State state;
 
 	/**
@@ -113,14 +114,14 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 		porygon.addCorner(p2);
 		porygon.addEdge(e1);*/
 		porygon = new Polymesh();
-		Point p1 = new Point(-10, -10, 0);
-		Point p2 = new Point(-10, 10, 0);
-		Point p3 = new Point(10, 10, 0);
-		Point p4 = new Point(10, -10, 0);
-		Point p5 = new Point(-10, -10, 20);
-		Point p6 = new Point(-10, 10, 20);
-		Point p7 = new Point(10, 10, 20);
-		Point p8 = new Point(10, -10, 20);
+		Point p1 = new Point(-50, -50, 50);
+		Point p2 = new Point(-50, 50, 50);
+		Point p3 = new Point(50, 50, 50);
+		Point p4 = new Point(50, -50, 50);
+		Point p5 = new Point(-50, -50, 150);
+		Point p6 = new Point(-50, 50, 150);
+		Point p7 = new Point(50, 50, 150);
+		Point p8 = new Point(50, -50, 150);
 		Edge e1 = new Edge(p1, p2);
 		Edge e2 = new Edge(p2, p3);
 		Edge e3 = new Edge(p3, p4);
@@ -154,10 +155,12 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 		porygon.addEdge(e10);
 		porygon.addEdge(e11);
 		porygon.addEdge(e12);
+		porygon.setCenter(new Point(0, 0, 15));
 	}
 	
 	private void start() {
 		state = State.Drawing;
+		keyPressed = false;
 		Timer timer = new Timer(1000/60, this);
 		timer.start();
 	}
@@ -217,19 +220,32 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 	 */
 	@Override
 	public void keyPressed(KeyEvent ke) {
+		if (!keyPressed) {
+			keyPressed = true;
 		switch (ke.getKeyCode()) {
 		//Rotates Porygon clockwise in z
-		case KeyEvent.VK_UP:
-			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.zAxis, 3));
+		case KeyEvent.VK_1:
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.zAxis, -Math.PI/18));
 			break;
 		//Rotates Porygon counter clockwise in z
-		case KeyEvent.VK_DOWN:
+		case KeyEvent.VK_2:
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.zAxis, Math.PI/18));
 			break;
 		//Rotates Porygon counter clockwise in x
-		case KeyEvent.VK_LEFT:
+		case KeyEvent.VK_3:
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.xAxis, -Math.PI/18));
 			break;
 		//Rotates Porygon clockwise in x 
-		case KeyEvent.VK_RIGHT:
+		case KeyEvent.VK_4:
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.xAxis, Math.PI/18));
+			break;
+		//Rotates Porygon counter clockwise in y
+		case KeyEvent.VK_5:
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.yAxis, -Math.PI/18));
+			break;
+		//Rotates Porygon clockwise in y
+		case KeyEvent.VK_6:
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.yAxis, Math.PI/18));
 			break;
 		//Moves Porygon y+ 
 		case KeyEvent.VK_W:
@@ -237,19 +253,57 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 			break;
 		//Moves Porygon y- 
 		case KeyEvent.VK_S:
+			porygon.updateTransformation(TransformationManager.translation3D(0, -1, 0));
 			break;
 		//Moves Porygon x-
 		case KeyEvent.VK_A:
+			porygon.updateTransformation(TransformationManager.translation3D(-1, 0, 0));
 			break;
 		//Moves Porygon x+ 
 		case KeyEvent.VK_D:
+			porygon.updateTransformation(TransformationManager.translation3D(1, 0, 0));
+			break;
+		//Moves Porygon z+
+		case KeyEvent.VK_Z:
+			porygon.updateTransformation(TransformationManager.translation3D(0, 0, 1));
+			break;
+		//Moves Porygon z-
+		case KeyEvent.VK_C:
+			porygon.updateTransformation(TransformationManager.translation3D(0, 0, -1));
 			break;
 		//Enlarges Porygon 
 		case KeyEvent.VK_Q:
+			porygon.updateTransformation(TransformationManager.scaling3D(1.1, 1.1, 1.1));
 			break;
 		//Shrinks Porygon 
 		case KeyEvent.VK_E:
+			porygon.updateTransformation(TransformationManager.scaling3D(0.9, 0.9, 0.9));
 			break;
+		//Enlarges Porygon x 
+		case KeyEvent.VK_T:
+			porygon.updateTransformation(TransformationManager.scaling3D(1.1, 1, 1));
+			break;
+		//Shrinks Porygon x
+		case KeyEvent.VK_Y:
+			porygon.updateTransformation(TransformationManager.scaling3D(0.9, 1, 1));
+			break;
+		//Enlarges Porygon y
+		case KeyEvent.VK_G:
+			porygon.updateTransformation(TransformationManager.scaling3D(1, 1.1, 1));
+			break;
+		//Shrinks Porygon y
+		case KeyEvent.VK_H:
+			porygon.updateTransformation(TransformationManager.scaling3D(1, 0.9, 1));
+			break;
+		//Enlarges Porygon z
+		case KeyEvent.VK_B:
+			porygon.updateTransformation(TransformationManager.scaling3D(1, 1, 1.1));
+			break;
+		//Shrinks Porygon z
+		case KeyEvent.VK_N:
+			porygon.updateTransformation(TransformationManager.scaling3D(1, 1, 0.9));
+			break;
+		}
 		}
 	}
 
@@ -258,6 +312,7 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 	 */
 	@Override
 	public void keyReleased(KeyEvent key) {
+		keyPressed = false;
 		switch (key.getKeyCode()) {
 		case KeyEvent.VK_UP:
 			break;

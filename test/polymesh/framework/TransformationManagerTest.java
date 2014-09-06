@@ -43,4 +43,16 @@ public class TransformationManagerTest {
         Assert.assertArrayEquals(m2, res);
     }
 
+	@Test
+	public void testRotation3DZAxis() {
+		double a = Math.PI / 3;
+        double[][] m1 = new double[][]{
+            { Math.cos(a), Math.sin(a), 0, 0 },
+            { -Math.sin(a), Math.cos(a), 0, 0 },
+            { 0, 0, 1, 0 },
+            { 0, 0, 0, 1 }
+        };
+        double[][] res = TransformationManager.rotation3D(TransformationManager.zAxis, Math.PI / 3);
+        Assert.assertArrayEquals(m1, res);
+    }
 }

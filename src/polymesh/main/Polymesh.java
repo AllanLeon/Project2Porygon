@@ -12,18 +12,27 @@ public class Polymesh {
 	private List<Polygon> polygons;
 	private List<Edge> edges;
 	private List<Point> corners;
+	private Point center;
+	private static double[][] transformationToAply;
 	private static double[][] transformation;
 	
 	public Polymesh() {
 		polygons = new ArrayList<Polygon>();
 		edges = new ArrayList<Edge>();
 		corners = new ArrayList<Point>();
+		transformationToAply = new double[][]{
+				{ 1, 0, 0, 0 },
+				{ 0, 1, 0, 0 },
+				{ 0, 0, 1, 0 },
+				{ 0, 0, 0, 1 }
+		};
 		transformation = new double[][]{
 				{ 1, 0, 0, 0 },
 				{ 0, 1, 0, 0 },
 				{ 0, 0, 1, 0 },
 				{ 0, 0, 0, 1 }
 		};
+		center = new Point(0, 0, 0);
 	}
 	
 	public List<Polygon> getPolygons() {
@@ -39,14 +48,24 @@ public class Polymesh {
 	}
 	
 	public static double[][] getTransformation() {
-		return transformation;
+		return transformationToAply;
+	}
+	
+	public void setCenter(Point center) {
+		this.center = center;
 	}
 	
 	public void updateTransformation(double[][] newTransf) {
 		transformation = TransformationManager.matrixMultiplication(transformation, newTransf);
+		double[][] coord = center.getTransformedCoordinates();
+		double[][] t = TransformationManager.translation3D(-coord[0][0], -coord[0][1], -coord[0][2]);
+		double[][] t1 = TransformationManager.translation3D(coord[0][0], coord[0][1], coord[0][2]);
+		transformationToAply = TransformationManager.matrixMultiplication(TransformationManager.matrixMultiplication(t, transformation), t1);
+		center.update();
 		for(int i = 0; i < corners.size(); i++) {
 			corners.get(i).update();
 		}
+		System.out.println("-----------------------");
 		Main.state = State.Drawing;
 	}
 	
