@@ -85,6 +85,10 @@ public class Point {
 		this.coordinates[0][2] = z;
 	}
 	
+	public void setTransformedCoordinates(double[][] transfCoord) {
+		this.transformedCoord = transfCoord;
+	}
+	
 	public void checkW(double[][] coord) {
 		if (coord[0][3] == 0) {
 			coord[0][3] = 1;

@@ -155,7 +155,7 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 		porygon.addEdge(e10);
 		porygon.addEdge(e11);
 		porygon.addEdge(e12);
-		porygon.setCenter(new Point(0, 0, 15));
+		porygon.setCenter(new Point(0, 0, 100));
 	}
 	
 	private void start() {
@@ -225,83 +225,83 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 		switch (ke.getKeyCode()) {
 		//Rotates Porygon clockwise in z
 		case KeyEvent.VK_1:
-			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.zAxis, -Math.PI/18));
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.zAxis, -Math.PI/18), false);
 			break;
 		//Rotates Porygon counter clockwise in z
 		case KeyEvent.VK_2:
-			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.zAxis, Math.PI/18));
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.zAxis, Math.PI/18), false);
 			break;
 		//Rotates Porygon counter clockwise in x
 		case KeyEvent.VK_3:
-			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.xAxis, -Math.PI/18));
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.xAxis, -Math.PI/18), false);
 			break;
 		//Rotates Porygon clockwise in x 
 		case KeyEvent.VK_4:
-			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.xAxis, Math.PI/18));
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.xAxis, Math.PI/18), false);
 			break;
 		//Rotates Porygon counter clockwise in y
 		case KeyEvent.VK_5:
-			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.yAxis, -Math.PI/18));
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.yAxis, -Math.PI/18), false);
 			break;
 		//Rotates Porygon clockwise in y
 		case KeyEvent.VK_6:
-			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.yAxis, Math.PI/18));
+			porygon.updateTransformation(TransformationManager.rotation3D(TransformationManager.yAxis, Math.PI/18), false);
 			break;
 		//Moves Porygon y+ 
 		case KeyEvent.VK_W:
-			porygon.updateTransformation(TransformationManager.translation3D(0, 1, 0));
+			porygon.updateTransformation(TransformationManager.translation3D(0, 1, 0), true);
 			break;
 		//Moves Porygon y- 
 		case KeyEvent.VK_S:
-			porygon.updateTransformation(TransformationManager.translation3D(0, -1, 0));
+			porygon.updateTransformation(TransformationManager.translation3D(0, -1, 0), true);
 			break;
 		//Moves Porygon x-
 		case KeyEvent.VK_A:
-			porygon.updateTransformation(TransformationManager.translation3D(-1, 0, 0));
+			porygon.updateTransformation(TransformationManager.translation3D(-1, 0, 0), true);
 			break;
 		//Moves Porygon x+ 
 		case KeyEvent.VK_D:
-			porygon.updateTransformation(TransformationManager.translation3D(1, 0, 0));
+			porygon.updateTransformation(TransformationManager.translation3D(1, 0, 0), true);
 			break;
 		//Moves Porygon z+
 		case KeyEvent.VK_Z:
-			porygon.updateTransformation(TransformationManager.translation3D(0, 0, 1));
+			porygon.updateTransformation(TransformationManager.translation3D(0, 0, 1), true);
 			break;
 		//Moves Porygon z-
 		case KeyEvent.VK_C:
-			porygon.updateTransformation(TransformationManager.translation3D(0, 0, -1));
+			porygon.updateTransformation(TransformationManager.translation3D(0, 0, -1), true);
 			break;
 		//Enlarges Porygon 
 		case KeyEvent.VK_Q:
-			porygon.updateTransformation(TransformationManager.scaling3D(1.1, 1.1, 1.1));
+			porygon.updateTransformation(TransformationManager.scaling3D(1.1, 1.1, 1.1), false);
 			break;
 		//Shrinks Porygon 
 		case KeyEvent.VK_E:
-			porygon.updateTransformation(TransformationManager.scaling3D(0.9, 0.9, 0.9));
+			porygon.updateTransformation(TransformationManager.scaling3D(0.9, 0.9, 0.9), false);
 			break;
 		//Enlarges Porygon x 
 		case KeyEvent.VK_T:
-			porygon.updateTransformation(TransformationManager.scaling3D(1.1, 1, 1));
+			porygon.updateTransformation(TransformationManager.scaling3D(1.1, 1, 1), false);
 			break;
 		//Shrinks Porygon x
 		case KeyEvent.VK_Y:
-			porygon.updateTransformation(TransformationManager.scaling3D(0.9, 1, 1));
+			porygon.updateTransformation(TransformationManager.scaling3D(0.9, 1, 1), false);
 			break;
 		//Enlarges Porygon y
 		case KeyEvent.VK_G:
-			porygon.updateTransformation(TransformationManager.scaling3D(1, 1.1, 1));
+			porygon.updateTransformation(TransformationManager.scaling3D(1, 1.1, 1), false);
 			break;
 		//Shrinks Porygon y
 		case KeyEvent.VK_H:
-			porygon.updateTransformation(TransformationManager.scaling3D(1, 0.9, 1));
+			porygon.updateTransformation(TransformationManager.scaling3D(1, 0.9, 1), false);
 			break;
 		//Enlarges Porygon z
 		case KeyEvent.VK_B:
-			porygon.updateTransformation(TransformationManager.scaling3D(1, 1, 1.1));
+			porygon.updateTransformation(TransformationManager.scaling3D(1, 1, 1.1), false);
 			break;
 		//Shrinks Porygon z
 		case KeyEvent.VK_N:
-			porygon.updateTransformation(TransformationManager.scaling3D(1, 1, 0.9));
+			porygon.updateTransformation(TransformationManager.scaling3D(1, 1, 0.9), false);
 			break;
 		}
 		}
