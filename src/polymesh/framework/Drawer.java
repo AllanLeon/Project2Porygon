@@ -3,8 +3,6 @@ package polymesh.framework;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import polymesh.main.Main;
-
 public class Drawer {
 
 	public static void drawLine(Graphics g, int x0, int y0, int x1, int y1, Color color) {
@@ -59,6 +57,6 @@ public class Drawer {
 	}
 	
 	private static void putPixel(Graphics g, int x, int y) {
-		g.drawLine(x, Main.getWindowHeight() - y, x, Main.getWindowHeight() - y);
+		g.drawLine(x, y, x, y);
 	}
 }

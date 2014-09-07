@@ -85,6 +85,10 @@ public class Point {
 		this.coordinates[0][2] = z;
 	}
 	
+	public void setTransformedCoordinates(double[][] transfCoord) {
+		this.transformedCoord = transfCoord;
+	}
+	
 	public void checkW(double[][] coord) {
 		if (coord[0][3] == 0) {
 			coord[0][3] = 1;
@@ -106,7 +110,7 @@ public class Point {
 	
 	private void applyTransformation() {
 		transformedCoord = TransformationManager.matrixMultiplication(coordinates,
-				Polymesh.getTransformation());
+				Main.getPorygon().getTransformation());
 		checkW(transformedCoord);
 		System.out.println(transformedCoord[0][0] + " " + transformedCoord[0][1] + " " + transformedCoord[0][2] + " " + transformedCoord[0][3]);
 	}
@@ -115,7 +119,6 @@ public class Point {
 		double[][] projection = TransformationManager.matrixMultiplication(transformedCoord,
 				TransformationManager.perspectiveProjectionXY3D(TransformationManager.distance));
 		checkW(projection);
-		//System.out.println(projection[0][0] + " " + projection[0][1] + " " + projection[0][2] + " " + projection[0][3]);
 		perspectiveProjection = TransformationManager.convertDoubleToIntMatrix(projection);
 	}
 	

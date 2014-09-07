@@ -8,7 +8,7 @@ public class TransformationManager {
 	public static final double[] xyAxis = new double[]{ 0.7071, 0.7071, 0 };
 	public static final double[] xzAxis = new double[]{ 0.7071, 0, 0.7071 };
 	public static final double[] yzAxis = new double[]{ 0, 0.7071, 0.7071 };
-	public static final double scale = 0.7;
+	public static final double scale = 0.5;
 	public static final double distance = 100;
 	
 	public static double[][] matrixMultiplication(double[][] m1, double[][] m2) {
