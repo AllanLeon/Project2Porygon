@@ -27,21 +27,22 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static final int WIDTH = 800;
+	private static final int WIDTH = 766;
 	private static final int HEIGHT = 600;
 	public static final int BIG_PANEL_WIDTH = 550;
 	public static final int BIG_PANEL_HEIGHT = 550;
 	public static final int SMALL_PANEL_WIDTH = 180;
 	public static final int SMALL_PANEL_HEIGHT = 180;
 	
+	private static Polymesh porygon;
+	public static State state;
+	
 	private JPanel princPanel;
 	private JPanel topSPanel;
 	private JPanel midSPanel;
 	private JPanel botSPanel;
 	private BufferedImage doubleBuffer;
-	private Polymesh porygon;
 	private boolean keyPressed;
-	public static State state;
 
 	/**
 	 * Launch the application.
@@ -71,7 +72,7 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 	 */
 	private void initialize() {
 		setTitle("Porygon 3D");
-		setSize(766, 600);
+		setSize(WIDTH, HEIGHT);
 		setVisible(true);
 		setResizable(false);
 		setFocusable(true);
@@ -106,22 +107,15 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 	}	
 	
 	private void initializePorygon() {
-		/*porygon = new Polymesh();
-		Point p1 = new Point(150, 500, 5);
-		Point p2 = new Point(200, 200, 10);
-		Edge e1 = new Edge(p1, p2);
-		porygon.addCorner(p1);
-		porygon.addCorner(p2);
-		porygon.addEdge(e1);*/
 		porygon = new Polymesh();
-		Point p1 = new Point(-50, -50, 50);
-		Point p2 = new Point(-50, 50, 50);
-		Point p3 = new Point(50, 50, 50);
-		Point p4 = new Point(50, -50, 50);
-		Point p5 = new Point(-50, -50, 150);
-		Point p6 = new Point(-50, 50, 150);
-		Point p7 = new Point(50, 50, 150);
-		Point p8 = new Point(50, -50, 150);
+		Point p1 = new Point(-50, -50, 20);
+		Point p2 = new Point(-50, 50, 20);
+		Point p3 = new Point(50, 50, 20);
+		Point p4 = new Point(50, -50, 20);
+		Point p5 = new Point(-50, -50, 120);
+		Point p6 = new Point(-50, 50, 120);
+		Point p7 = new Point(50, 50, 120);
+		Point p8 = new Point(50, -50, 120);
 		Edge e1 = new Edge(p1, p2);
 		Edge e2 = new Edge(p2, p3);
 		Edge e3 = new Edge(p3, p4);
@@ -134,7 +128,6 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 		Edge e10 = new Edge(p2, p6);
 		Edge e11 = new Edge(p3, p7);
 		Edge e12 = new Edge(p4, p8);
-		Polygon pol1 = new Polygon();
 		porygon.addCorner(p1);
 		porygon.addCorner(p2);
 		porygon.addCorner(p3);
@@ -155,7 +148,7 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 		porygon.addEdge(e10);
 		porygon.addEdge(e11);
 		porygon.addEdge(e12);
-		porygon.setCenter(new Point(0, 0, 100));
+		porygon.setCenter(new Point(0, 0, 70));
 	}
 	
 	private void start() {
@@ -313,28 +306,6 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 	@Override
 	public void keyReleased(KeyEvent key) {
 		keyPressed = false;
-		switch (key.getKeyCode()) {
-		case KeyEvent.VK_UP:
-			break;
-		case KeyEvent.VK_DOWN:
-			break;
-		case KeyEvent.VK_LEFT:
-			break;
-		case KeyEvent.VK_RIGHT:
-			break;
-		case KeyEvent.VK_W:
-			break;
-		case KeyEvent.VK_S:
-			break;
-		case KeyEvent.VK_A:
-			break;
-		case KeyEvent.VK_D:
-			break;
-		case KeyEvent.VK_Q:
-			break;
-		case KeyEvent.VK_E:
-			break;
-		}
 	}
 
 	@Override
@@ -342,12 +313,8 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 		
 	}
 	
-	public static int getWindowWidth() {
-		return WIDTH;
-	}
-	
-	public static int getWindowHeight() {
-		return HEIGHT;
+	public static Polymesh getPorygon() {
+		return porygon;
 	}
 	
 	@Override

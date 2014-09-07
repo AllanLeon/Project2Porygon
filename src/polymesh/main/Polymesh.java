@@ -13,8 +13,8 @@ public class Polymesh {
 	private List<Edge> edges;
 	private List<Point> corners;
 	private Point center;
-	private static double[][] transformationToAply;
-	private static double[][] transformation;
+	private double[][] transformationToAply;
+	private double[][] transformation;
 	
 	public Polymesh() {
 		polygons = new ArrayList<Polygon>();
@@ -47,7 +47,7 @@ public class Polymesh {
 		return polygons;
 	}
 	
-	public static double[][] getTransformation() {
+	public double[][] getTransformation() {
 		return transformationToAply;
 	}
 	
@@ -72,8 +72,6 @@ public class Polymesh {
 			updateCenter(newTransf);
 		}
 		coord = center.getTransformedCoordinates();
-		System.out.println(coord[0][0] + " " + coord[0][1] + " " + coord[0][2]);
-		System.out.println("-----------------------");
 		Main.state = State.Drawing;
 	}
 	
