@@ -153,13 +153,13 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 		porygon.addEdge(e9);
 		porygon.addEdge(e10);
 		porygon.addEdge(e11);
-<<<<<<< HEAD
 		porygon.addEdge(e12);*/
 		porygon = new Polymesh();
 		porygon.setCenter(new Point(0, 60, 45));
 		toastLeftLeg();
 		toastRightLeg();
-		toastBody();		
+		toastBody();
+		toastTail();
 	}
 
 	private void start() {
@@ -736,20 +736,20 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 	}
 
 	private void toastTail() {
-		//bottom
-		Polygon pol15 = new Polygon();
-		Point p1 = new Point(-35, 10, 40);
-		Point p2 = new Point(35, 10, 40);
-		Point p3 = new Point(35, 10, 90);
-		Point p4 = new Point(-35, 10, 90);
+		//front
+		Polygon pol28 = new Polygon();
+		Point p1 = new Point(-30, 10, 90);
+		Point p2 = new Point(-30, 40, 90);
+		Point p3 = new Point(30, 40, 90);
+		Point p4 = new Point(30, 10, 90);
 		Edge e1 = new Edge(p1, p2);
 		Edge e2 = new Edge(p2, p3);
 		Edge e3 = new Edge(p3, p4);
 		Edge e4 = new Edge(p1, p4);
-		pol15.addEdge(e1);
-		pol15.addEdge(e2);
-		pol15.addEdge(e3);
-		pol15.addEdge(e4);
+		pol28.addEdge(e1);
+		pol28.addEdge(e2);
+		pol28.addEdge(e3);
+		pol28.addEdge(e4);
 		porygon.addCorner(p1);
 		porygon.addCorner(p2);
 		porygon.addCorner(p3);
@@ -758,148 +758,131 @@ public class Main extends JFrame implements KeyListener, ActionListener {
 		porygon.addEdge(e2);
 		porygon.addEdge(e3);
 		porygon.addEdge(e4);
-		porygon.addPolygon(pol15);
-		//back
-		Polygon pol16 = new Polygon();
-		Point p5 = new Point(-40, 40, 110);
-		Point p6 = new Point(40, 40, 110);
+		porygon.addPolygon(pol28);
+		//left
+		Polygon pol29 = new Polygon();
+		Point p5 = new Point(30, 10, 120);
 		Edge e5 = new Edge(p4, p5);
-		Edge e6 = new Edge(p5, p6);
-		Edge e7 = new Edge(p6, p3);
-		pol16.addEdge(e3);
-		pol16.addEdge(e5);
-		pol16.addEdge(e6);
-		pol16.addEdge(e7);
+		Edge e6 = new Edge(p3, p5);
+		pol29.addEdge(e3);
+		pol29.addEdge(e5);
+		pol29.addEdge(e6);
 		porygon.addCorner(p5);
-		porygon.addCorner(p6);
 		porygon.addEdge(e5);
 		porygon.addEdge(e6);
+		porygon.addPolygon(pol29);
+		//right
+		Polygon pol30 = new Polygon();
+		Point p6 = new Point(-30, 10, 120);
+		Edge e7 = new Edge(p1, p6);
+		Edge e8 = new Edge(p2, p6);
+		pol30.addEdge(e1);
+		pol30.addEdge(e7);
+		pol30.addEdge(e8);
+		porygon.addCorner(p6);
 		porygon.addEdge(e7);
-		porygon.addPolygon(pol16);
+		porygon.addEdge(e8);
+		porygon.addPolygon(pol30);
+		//bottom
+		Polygon pol31 = new Polygon();
+		Edge e11 = new Edge(p5, p6);
+		pol31.addEdge(e4);
+		pol31.addEdge(e5);
+		pol31.addEdge(e11);
+		pol31.addEdge(e7);
+		porygon.addEdge(e11);
+		porygon.addPolygon(pol31);
 		//middle
-		Polygon pol17 = new Polygon();
-		Point p7 = new Point(50, 50, 20);
-		Point p8 = new Point(-50, 50, 20);
-		Edge e8 = new Edge(p6, p7);
-		Edge e9 = new Edge(p7, p8);
-		Edge e10 = new Edge(p8, p5);
-		pol17.addEdge(e8);
-		pol17.addEdge(e9);
-		pol17.addEdge(e10);
-		pol17.addEdge(e6);
+		Polygon pol32 = new Polygon();
+		pol32.addEdge(e2);
+		pol32.addEdge(e8);
+		pol32.addEdge(e11);
+		pol32.addEdge(e6);
+		porygon.addPolygon(pol32);
+		//top tail
+		Polygon pol33 = new Polygon();
+		Point p7 = new Point(-5, 100, 150);
+		Point p8 = new Point(5, 100, 150);
+		Edge e12 = new Edge(p2, p7);
+		Edge e13 = new Edge(p7, p8);
+		Edge e14 = new Edge(p3, p8);
+		pol33.addEdge(e2);
+		pol33.addEdge(e12);
+		pol33.addEdge(e13);
+		pol33.addEdge(e14);
 		porygon.addCorner(p7);
 		porygon.addCorner(p8);
-		porygon.addEdge(e8);
-		porygon.addEdge(e9);
-		porygon.addEdge(e10);
-		porygon.addPolygon(pol17);
-		//right
-		Polygon pol18 = new Polygon();
-		Edge e11 = new Edge(p1, p8);
-		pol18.addEdge(e10);
-		pol18.addEdge(e11);
-		pol18.addEdge(e4);
-		pol18.addEdge(e5);
-		porygon.addEdge(e11);
-		porygon.addPolygon(pol18);
-		//left
-		Polygon pol19 = new Polygon();
-		Edge e12 = new Edge(p2, p7);
-		pol19.addEdge(e2);
-		pol19.addEdge(e7);
-		pol19.addEdge(e8);
-		pol19.addEdge(e12);
 		porygon.addEdge(e12);
-		porygon.addPolygon(pol19);
-		//front
-		Polygon pol20 = new Polygon();
-		pol20.addEdge(e1);
-		pol20.addEdge(e12);
-		pol20.addEdge(e9);
-		pol20.addEdge(e11);
-		porygon.addPolygon(pol20);
-		//right triangle
-		Polygon pol21 = new Polygon();
-		Point p9 = new Point(-30, 75, 45);
-		Point p10 = new Point(-10, 100, 40);
-		Edge e13 = new Edge(p8, p10);
-		Edge e14 = new Edge(p8, p9);
-		Edge e15 = new Edge(p9, p10);
-		pol21.addEdge(e13);
-		pol21.addEdge(e14);
-		pol21.addEdge(e15);
-		porygon.addCorner(p9);
-		porygon.addCorner(p10);
 		porygon.addEdge(e13);
 		porygon.addEdge(e14);
+		porygon.addPolygon(pol33);
+		//left tail
+		Polygon pol34 = new Polygon();
+		Point p9 = new Point(5, 95, 155);
+		Edge e15 = new Edge(p8, p9);
+		Edge e16 = new Edge(p5, p9);
+		pol34.addEdge(e6);
+		pol34.addEdge(e14);
+		pol34.addEdge(e15);
+		pol34.addEdge(e16);
+		porygon.addCorner(p9);
 		porygon.addEdge(e15);
-		porygon.addPolygon(pol21);
-		//top
-		Polygon pol22 = new Polygon();
-		Point p11 = new Point(-10, 80, 90);
-		Point p12 = new Point(10, 80, 90);
-		Point p13 = new Point(10, 100, 40);
-		Edge e16 = new Edge(p10, p11);
-		Edge e17 = new Edge(p11, p12);
-		Edge e18 = new Edge(p12, p13);
-		Edge e19 = new Edge(p10, p13);
-		pol22.addEdge(e16);
-		pol22.addEdge(e17);
-		pol22.addEdge(e18);
-		pol22.addEdge(e19);
-		porygon.addCorner(p11);
-		porygon.addCorner(p12);
-		porygon.addCorner(p13);
 		porygon.addEdge(e16);
+		porygon.addPolygon(pol34);
+		//right tail
+		Polygon pol35 = new Polygon();
+		Point p10 = new Point(-5, 95, 155);
+		Edge e17 = new Edge(p6, p10);
+		Edge e18 = new Edge(p7, p10);
+		pol35.addEdge(e8);
+		pol35.addEdge(e12);
+		pol35.addEdge(e17);
+		pol35.addEdge(e18);
+		porygon.addCorner(p10);
 		porygon.addEdge(e17);
 		porygon.addEdge(e18);
+		porygon.addPolygon(pol35);
+		//bottom tail
+		Polygon pol36 = new Polygon();
+		Edge e19 = new Edge(p9, p10);
+		pol36.addEdge(e11);
+		pol36.addEdge(e16);
+		pol36.addEdge(e17);
+		pol36.addEdge(e19);
 		porygon.addEdge(e19);
-		porygon.addPolygon(pol22);
-		//right top
-		Polygon pol23 = new Polygon();
-		Edge e20 = new Edge(p11, p5);
-		pol23.addEdge(e13);
-		pol23.addEdge(e16);
-		pol23.addEdge(e20);
-		pol23.addEdge(e10);
-		porygon.addEdge(e20);
-		porygon.addPolygon(pol23);
-		//back top
-		Polygon pol24 = new Polygon();
-		Edge e21 = new Edge(p12, p6);
-		pol24.addEdge(e6);
-		pol24.addEdge(e20);
-		pol24.addEdge(e17);
-		pol24.addEdge(e21);
-		porygon.addEdge(e21);
-		porygon.addPolygon(pol24);
-		//left top
-		Polygon pol25 = new Polygon();
-		Edge e22 = new Edge(p7, p13);
-		pol25.addEdge(e22);
-		pol25.addEdge(e18);
-		pol25.addEdge(e21);
-		pol25.addEdge(e8);
-		porygon.addEdge(e22);
-		porygon.addPolygon(pol25);
-		//front top
-		Polygon pol26 = new Polygon();
-		pol26.addEdge(e13);
-		pol26.addEdge(e19);
-		pol26.addEdge(e22);
-		pol26.addEdge(e9);
-		porygon.addPolygon(pol26);
-		//left triangle
-		Polygon pol27 = new Polygon();
-		Point p14 = new Point(30, 75, 45);
-		Edge e23 = new Edge(p7, p14);
-		Edge e24 = new Edge(p13, p14);
-		pol27.addEdge(e22);
-		pol27.addEdge(e23);
-		pol27.addEdge(e24);
-		porygon.addCorner(p14);
-		porygon.addEdge(e23);
-		porygon.addEdge(e24);
-		porygon.addPolygon(pol27);	
+		porygon.addPolygon(pol36);
+		//tip
+		Polygon pol37 = new Polygon();
+		pol37.addEdge(e13);
+		pol37.addEdge(e15);
+		pol37.addEdge(e19);
+		pol37.addEdge(e18);
+		porygon.addPolygon(pol37);
 	}	
+
+	private void toastHead() {
+		//left
+		Polygon pol38 = new Polygon();
+		Point p1 = new Point(-30, 10, 90);
+		Point p2 = new Point(-30, 40, 90);
+		Point p3 = new Point(30, 40, 90);
+		Point p4 = new Point(30, 10, 90);
+		Edge e1 = new Edge(p1, p2);
+		Edge e2 = new Edge(p2, p3);
+		Edge e3 = new Edge(p3, p4);
+		Edge e4 = new Edge(p1, p4);
+		pol38.addEdge(e1);
+		pol38.addEdge(e2);
+		pol38.addEdge(e3);
+		pol38.addEdge(e4);
+		porygon.addCorner(p1);
+		porygon.addCorner(p2);
+		porygon.addCorner(p3);
+		porygon.addCorner(p4);
+		porygon.addEdge(e1);
+		porygon.addEdge(e2);
+		porygon.addEdge(e3);
+		porygon.addEdge(e4);
+		porygon.addPolygon(pol38);
+	}
 }
