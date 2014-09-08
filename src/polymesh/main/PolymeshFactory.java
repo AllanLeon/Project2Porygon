@@ -12,6 +12,7 @@ public class PolymeshFactory {
 		createBody(porygon);
 		createTail(porygon);
 		createHead(porygon);
+		createEyes(porygon);
 		return porygon;
 	}
 	
@@ -550,7 +551,7 @@ public class PolymeshFactory {
 		Point p6 = new Point(40, 62, 10);
 		Point p7 = new Point(30, 95, 80);
 		Point p8 = new Point(25, 100, 90);
-		Edge e6 = new Edge(p5, p6);
+		Edge e6 = new Edge(p5, p6, Color.PINK);
 		Edge e7 = new Edge(p6, p7, Color.PINK);
 		Edge e8 = new Edge(p7, p8, Color.PINK);
 		Edge e9 = new Edge(p8, p3, Color.PINK);
@@ -675,5 +676,75 @@ public class PolymeshFactory {
 		pol47.addEdge(e18);
 		pol47.addEdge(e16);
 		porygon.addPolygon(pol47);
+	}
+	
+	private static void createEyes(Polymesh porygon) {
+		//left
+		Point p1 = new Point(33, 85, 59);
+		Point p2 = new Point(31, 92, 73);
+		Point p3 = new Point(40, 79, 59);
+		Point p4 = new Point(40, 84, 72);
+		Point p5 = new Point(36, 82, 55);
+		Point p6 = new Point(37, 88, 79);
+		Edge e1 = new Edge(p1, p2, Color.WHITE);
+		Edge e2 = new Edge(p3, p4, Color.WHITE);
+		Edge e3 = new Edge(p1, p5, Color.WHITE);
+		Edge e4 = new Edge(p5, p3, Color.WHITE);
+		Edge e5 = new Edge(p2, p6, Color.WHITE);
+		Edge e6 = new Edge(p6, p4, Color.WHITE);
+		Polygon pol1 = new Polygon();
+		pol1.addEdge(e1);
+		pol1.addEdge(e2);
+		pol1.addEdge(e3);
+		pol1.addEdge(e4);
+		pol1.addEdge(e5);
+		pol1.addEdge(e6);
+		porygon.addCorner(p1);
+		porygon.addCorner(p2);
+		porygon.addCorner(p3);
+		porygon.addCorner(p4);
+		porygon.addCorner(p5);
+		porygon.addCorner(p6);
+		porygon.addEdge(e1);
+		porygon.addEdge(e2);
+		porygon.addEdge(e3);
+		porygon.addEdge(e4);
+		porygon.addEdge(e5);
+		porygon.addEdge(e6);
+		porygon.addPolygon(pol1);
+		
+		//right
+		Point p11 = new Point(-33, 85, 59);
+		Point p12 = new Point(-31, 92, 73);
+		Point p13 = new Point(-40, 79, 59);
+		Point p14 = new Point(-40, 84, 72);
+		Point p15 = new Point(-36, 82, 55);
+		Point p16 = new Point(-37, 88, 79);
+		Edge e11 = new Edge(p11, p12, Color.WHITE);
+		Edge e12 = new Edge(p13, p14, Color.WHITE);
+		Edge e13 = new Edge(p11, p15, Color.WHITE);
+		Edge e14 = new Edge(p15, p13, Color.WHITE);
+		Edge e15 = new Edge(p12, p16, Color.WHITE);
+		Edge e16 = new Edge(p16, p14, Color.WHITE);
+		Polygon pol2 = new Polygon();
+		pol2.addEdge(e11);
+		pol2.addEdge(e12);
+		pol2.addEdge(e13);
+		pol2.addEdge(e14);
+		pol2.addEdge(e15);
+		pol2.addEdge(e16);
+		porygon.addCorner(p11);
+		porygon.addCorner(p12);
+		porygon.addCorner(p13);
+		porygon.addCorner(p14);
+		porygon.addCorner(p15);
+		porygon.addCorner(p16);
+		porygon.addEdge(e11);
+		porygon.addEdge(e12);
+		porygon.addEdge(e13);
+		porygon.addEdge(e14);
+		porygon.addEdge(e15);
+		porygon.addEdge(e16);
+		porygon.addPolygon(pol2);
 	}
 }
