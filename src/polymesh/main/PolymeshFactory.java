@@ -4,14 +4,17 @@ import java.awt.Color;
 
 public class PolymeshFactory {
 
+	private static Polymesh porygon;
+
 	public static Polymesh createPorygon() {
-		Polymesh porygon = new Polymesh();
-		porygon.setCenter(new Point(0, 0, 70));
+		porygon = new Polymesh();
+		porygon.setCenter(new Point(0, 0, 105));
 		createLeftLeg(porygon);
 		createRightLeg(porygon);
 		createBody(porygon);
 		createTail(porygon);
 		createHead(porygon);
+		createBeak(porygon);
 		createEyes(porygon);
 		return porygon;
 	}
@@ -458,8 +461,8 @@ public class PolymeshFactory {
 		porygon.addPolygon(pol32);
 		//top tail
 		Polygon pol33 = new Polygon();
-		Point p7 = new Point(-5, 50, 190);
-		Point p8 = new Point(5, 50, 190);
+		Point p7 = new Point(-5, 50, 210);
+		Point p8 = new Point(5, 50, 210);
 		Edge e12 = new Edge(p2, p7);
 		Edge e13 = new Edge(p7, p8);
 		Edge e14 = new Edge(p3, p8);
@@ -475,7 +478,7 @@ public class PolymeshFactory {
 		porygon.addPolygon(pol33);
 		//left tail
 		Polygon pol34 = new Polygon();
-		Point p9 = new Point(5, 45, 195);
+		Point p9 = new Point(5, 45, 220);
 		Edge e15 = new Edge(p8, p9);
 		Edge e16 = new Edge(p5, p9);
 		pol34.addEdge(e6);
@@ -488,7 +491,7 @@ public class PolymeshFactory {
 		porygon.addPolygon(pol34);
 		//right tail
 		Polygon pol35 = new Polygon();
-		Point p10 = new Point(-5, 45, 195);
+		Point p10 = new Point(-5, 45, 220);
 		Edge e17 = new Edge(p6, p10);
 		Edge e18 = new Edge(p7, p10);
 		pol35.addEdge(e8);
@@ -520,11 +523,11 @@ public class PolymeshFactory {
 	private static void createHead(Polymesh porygon) {
 		//left
 		Polygon pol38 = new Polygon();
-		Point p1 = new Point(40, 45, 60);
-		Point p2 = new Point(40, 55, 100);
-		Point p3 = new Point(40, 70, 105);
-		Point p4 = new Point(40, 85, 75);
-		Point p5 = new Point(40, 60, 10);
+		Point p1 = new Point(30, 45, 60);
+		Point p2 = new Point(30, 55, 100);
+		Point p3 = new Point(30, 70, 105);
+		Point p4 = new Point(30, 85, 75);
+		Point p5 = new Point(30, 60, 10);
 		Edge e1 = new Edge(p1, p2, Color.PINK);
 		Edge e2 = new Edge(p2, p3, Color.PINK);
 		Edge e3 = new Edge(p3, p4, Color.PINK);
@@ -548,10 +551,10 @@ public class PolymeshFactory {
 		porygon.addPolygon(pol38);
 		//left-mid
 		Polygon pol39 = new Polygon();
-		Point p6 = new Point(40, 62, 10);
-		Point p7 = new Point(30, 95, 80);
-		Point p8 = new Point(25, 100, 90);
-		Edge e6 = new Edge(p5, p6, Color.PINK);
+		Point p6 = new Point(30, 62, 10);
+		Point p7 = new Point(20, 95, 80);
+		Point p8 = new Point(15, 100, 90);
+		Edge e6 = new Edge(p5, p6);
 		Edge e7 = new Edge(p6, p7, Color.PINK);
 		Edge e8 = new Edge(p7, p8, Color.PINK);
 		Edge e9 = new Edge(p8, p3, Color.PINK);
@@ -571,9 +574,9 @@ public class PolymeshFactory {
 		porygon.addPolygon(pol39);
 		//top
 		Polygon pol40 = new Polygon();
-		Point p9 = new Point(-40, 62, 10);
-		Point p10 = new Point(-30, 95, 80);
-		Point p11 = new Point(-25, 100, 90);
+		Point p9 = new Point(-30, 62, 10);
+		Point p10 = new Point(-20, 95, 80);
+		Point p11 = new Point(-15, 100, 90);
 		Edge e10 = new Edge(p6, p9);
 		Edge e11 = new Edge(p9, p10, Color.PINK);
 		Edge e12 = new Edge(p10, p11, Color.PINK);
@@ -594,7 +597,7 @@ public class PolymeshFactory {
 		porygon.addPolygon(pol40);
 		//beak
 		Polygon pol41 = new Polygon();
-		Point p12 = new Point(-40, 60, 10);
+		Point p12 = new Point(-30, 60, 10);
 		Edge e14 = new Edge(p5, p12);
 		Edge e15 = new Edge(p12, p9);
 		pol41.addEdge(e14);
@@ -607,9 +610,9 @@ public class PolymeshFactory {
 		porygon.addPolygon(pol41);
 		//bottom front
 		Polygon pol42 = new Polygon();
-		Point p13 = new Point(-40, 45, 60);
-		Edge e16 = new Edge(p12, p13);
-		Edge e17 = new Edge(p1, p13);
+		Point p13 = new Point(-30, 45, 60);
+		Edge e16 = new Edge(p12, p13, Color.PINK);
+		Edge e17 = new Edge(p1, p13, Color.PINK);
 		pol42.addEdge(e14);
 		pol42.addEdge(e16);
 		pol42.addEdge(e17);
@@ -620,7 +623,7 @@ public class PolymeshFactory {
 		porygon.addPolygon(pol42);
 		//bottom mid
 		Polygon pol43 = new Polygon();
-		Point p14 = new Point(-40, 55, 100);
+		Point p14 = new Point(-30, 55, 100);
 		Edge e18 = new Edge(p13, p14, Color.PINK);
 		Edge e19 = new Edge(p14, p2, Color.PINK);
 		pol43.addEdge(e17);
@@ -633,7 +636,7 @@ public class PolymeshFactory {
 		porygon.addPolygon(pol43);
 		//bottom back
 		Polygon pol44 = new Polygon();
-		Point p15 = new Point(-40, 70, 105);
+		Point p15 = new Point(-30, 70, 105);
 		Edge e20 = new Edge(p14, p15, Color.PINK);
 		Edge e21 = new Edge(p3, p15, Color.PINK);
 		pol44.addEdge(e19);
@@ -655,7 +658,7 @@ public class PolymeshFactory {
 		porygon.addPolygon(pol45);
 		//right-mid
 		Polygon pol46 = new Polygon();
-		Point p16 = new Point(-40, 85, 75);
+		Point p16 = new Point(-30, 85, 75);
 		Edge e23 = new Edge(p15, p16, Color.PINK);
 		Edge e24 = new Edge(p12, p16, Color.PINK);
 		pol39.addEdge(e11);
@@ -678,27 +681,114 @@ public class PolymeshFactory {
 		porygon.addPolygon(pol47);
 	}
 	
+	private static void createBeak(Polymesh porygon) {
+		//top
+		Polygon pol48 = new Polygon();
+		Point p1 = new Point(-30, 62, 10);
+		Point p2 = new Point(-27, 74, 35);
+		Point p3 = new Point(27, 74, 35);
+		Point p4 = new Point(30, 62, 10);
+		Edge e1 = new Edge(p1, p2);
+		Edge e2 = new Edge(p2, p3);
+		Edge e3 = new Edge(p3, p4);
+		pol48.addEdge(e1);
+		pol48.addEdge(e2);
+		pol48.addEdge(e3);
+		pol48.addEdge(porygon.getPolygons().get(39).getEdges().get(0));
+		porygon.addCorner(p1);
+		porygon.addCorner(p2);
+		porygon.addCorner(p3);
+		porygon.addCorner(p4);
+		porygon.addEdge(e1);
+		porygon.addEdge(e2);
+		porygon.addEdge(e3);
+		//mid
+		Polygon pol49 = new Polygon();
+		Point p5 = new Point(-30, 60, 10);
+		Point p6 = new Point(-30, 70, 35);
+		Point p7 = new Point(30, 70, 35);
+		Point p8 = new Point(30, 60, 10);
+		Edge e4 = new Edge(p5, p6);
+		Edge e5 = new Edge(p6, p7);
+		Edge e6 = new Edge(p7, p8);
+		pol49.addEdge(e4);
+		pol49.addEdge(e5);
+		pol49.addEdge(e6);
+		pol49.addEdge(porygon.getPolygons().get(39).getEdges().get(0));
+		porygon.addCorner(p5);
+		porygon.addCorner(p6);
+		porygon.addCorner(p7);
+		porygon.addCorner(p8);
+		porygon.addEdge(e4);
+		porygon.addEdge(e5);
+		porygon.addEdge(e6);
+		porygon.addPolygon(pol49);
+		//bottom
+		Polygon pol50 = new Polygon();
+		Point p10 = new Point(-30, 52, 35);
+		Point p11 = new Point(30, 52, 35);
+		Edge e7 = new Edge(p5, p10);
+		Edge e8 = new Edge(p10, p11);
+		Edge e9 = new Edge(p11, p8);
+		pol50.addEdge(e7);
+		pol50.addEdge(e8);
+		pol50.addEdge(e9);
+		pol50.addEdge(porygon.getPolygons().get(39).getEdges().get(0));
+		porygon.addCorner(p10);
+		porygon.addCorner(p11);
+		porygon.addEdge(e7);
+		porygon.addEdge(e8);
+		porygon.addEdge(e9);
+		porygon.addPolygon(pol50);
+		//intersect up
+		Polygon pol51 = new Polygon();
+		Edge e10 = new Edge(p2, p6);
+		Edge e11 = new Edge(p3, p7);
+		pol51.addEdge(e10);
+		pol51.addEdge(e2);
+		pol51.addEdge(e11);
+		pol51.addEdge(e5);
+		porygon.addEdge(e10);
+		porygon.addEdge(e11);
+		porygon.addPolygon(pol51);
+		//intersect down
+		Polygon pol52 = new Polygon();
+		Edge e12 = new Edge(p6, p10);
+		Edge e13 = new Edge(p7, p11);
+		pol52.addEdge(e12);
+		pol52.addEdge(e5);
+		pol52.addEdge(e13);
+		pol52.addEdge(e8);
+		porygon.addEdge(e12);
+		porygon.addEdge(e13);
+		porygon.addPolygon(pol52);
+	}
+
 	private static void createEyes(Polymesh porygon) {
 		//left
-		Point p1 = new Point(33, 85, 59);
-		Point p2 = new Point(31, 92, 73);
-		Point p3 = new Point(40, 79, 59);
-		Point p4 = new Point(40, 84, 72);
-		Point p5 = new Point(36, 82, 55);
-		Point p6 = new Point(37, 88, 79);
+		Polygon pol53 = new Polygon();
+		Point p1 = new Point(24, 82, 52);
+		Point p2 = new Point(21, 92, 75);
+		Point p3 = new Point(30, 76, 52);
+		Point p4 = new Point(30, 85, 74);
+		Point p5 = new Point(13, 86, 65);
+		Point p6 = new Point(30, 75, 67);
 		Edge e1 = new Edge(p1, p2, Color.WHITE);
 		Edge e2 = new Edge(p3, p4, Color.WHITE);
-		Edge e3 = new Edge(p1, p5, Color.WHITE);
-		Edge e4 = new Edge(p5, p3, Color.WHITE);
-		Edge e5 = new Edge(p2, p6, Color.WHITE);
-		Edge e6 = new Edge(p6, p4, Color.WHITE);
-		Polygon pol1 = new Polygon();
-		pol1.addEdge(e1);
-		pol1.addEdge(e2);
-		pol1.addEdge(e3);
-		pol1.addEdge(e4);
-		pol1.addEdge(e5);
-		pol1.addEdge(e6);
+		Edge e3 = new Edge(p1, p3, Color.WHITE);
+		Edge e4 = new Edge(p2, p4, Color.WHITE);
+		Edge e5 = new Edge(p1, p5, Color.WHITE);
+		Edge e6 = new Edge(p5, p2, Color.WHITE);
+		Edge e7 = new Edge(p3, p6, Color.WHITE);
+		Edge e8 = new Edge(p6, p4, Color.WHITE);
+		pol53.addEdge(e1);
+		pol53.addEdge(e2);
+		pol53.addEdge(e3);
+		pol53.addEdge(e4);
+		pol53.addEdge(e5);
+		pol53.addEdge(e6);
+		pol53.addEdge(e7);
+		pol53.addEdge(e8);
 		porygon.addCorner(p1);
 		porygon.addCorner(p2);
 		porygon.addCorner(p3);
@@ -711,40 +801,48 @@ public class PolymeshFactory {
 		porygon.addEdge(e4);
 		porygon.addEdge(e5);
 		porygon.addEdge(e6);
-		porygon.addPolygon(pol1);
+		porygon.addEdge(e7);
+		porygon.addEdge(e8);
+		porygon.addPolygon(pol53);
 		
 		//right
-		Point p11 = new Point(-33, 85, 59);
-		Point p12 = new Point(-31, 92, 73);
-		Point p13 = new Point(-40, 79, 59);
-		Point p14 = new Point(-40, 84, 72);
-		Point p15 = new Point(-36, 82, 55);
-		Point p16 = new Point(-37, 88, 79);
-		Edge e11 = new Edge(p11, p12, Color.WHITE);
-		Edge e12 = new Edge(p13, p14, Color.WHITE);
-		Edge e13 = new Edge(p11, p15, Color.WHITE);
-		Edge e14 = new Edge(p15, p13, Color.WHITE);
-		Edge e15 = new Edge(p12, p16, Color.WHITE);
-		Edge e16 = new Edge(p16, p14, Color.WHITE);
-		Polygon pol2 = new Polygon();
-		pol2.addEdge(e11);
-		pol2.addEdge(e12);
-		pol2.addEdge(e13);
-		pol2.addEdge(e14);
-		pol2.addEdge(e15);
-		pol2.addEdge(e16);
+		Polygon pol54 = new Polygon();
+		Point p7 = new Point(-24, 82, 52);
+		Point p8 = new Point(-21, 92, 75);
+		Point p9 = new Point(-30, 76, 52);
+		Point p10 = new Point(-30, 85, 74);
+		Point p11 = new Point(-13, 86, 65);
+		Point p12 = new Point(-30, 75, 67);
+		Edge e9 = new Edge(p7, p8, Color.WHITE);
+		Edge e10 = new Edge(p9, p10, Color.WHITE);
+		Edge e11 = new Edge(p7, p9, Color.WHITE);
+		Edge e12 = new Edge(p8, p10, Color.WHITE);
+		Edge e13 = new Edge(p7, p11, Color.WHITE);
+		Edge e14 = new Edge(p11, p8, Color.WHITE);
+		Edge e15 = new Edge(p9, p12, Color.WHITE);
+		Edge e16 = new Edge(p12, p10, Color.WHITE);
+		pol54.addEdge(e9);
+		pol54.addEdge(e10);
+		pol54.addEdge(e11);
+		pol54.addEdge(e12);
+		pol54.addEdge(e13);
+		pol54.addEdge(e14);
+		pol54.addEdge(e15);
+		pol54.addEdge(e16);
+		porygon.addCorner(p7);
+		porygon.addCorner(p8);
+		porygon.addCorner(p9);
+		porygon.addCorner(p10);
 		porygon.addCorner(p11);
 		porygon.addCorner(p12);
-		porygon.addCorner(p13);
-		porygon.addCorner(p14);
-		porygon.addCorner(p15);
-		porygon.addCorner(p16);
+		porygon.addEdge(e9);
+		porygon.addEdge(e10);
 		porygon.addEdge(e11);
 		porygon.addEdge(e12);
 		porygon.addEdge(e13);
 		porygon.addEdge(e14);
 		porygon.addEdge(e15);
 		porygon.addEdge(e16);
-		porygon.addPolygon(pol2);
+		porygon.addPolygon(pol54);
 	}
 }
