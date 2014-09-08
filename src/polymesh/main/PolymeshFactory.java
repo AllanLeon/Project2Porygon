@@ -4,14 +4,17 @@ import java.awt.Color;
 
 public class PolymeshFactory {
 
+	private static Polymesh porygon;
+
 	public static Polymesh createPorygon() {
-		Polymesh porygon = new Polymesh();
+		porygon = new Polymesh();
 		porygon.setCenter(new Point(0, 0, 70));
 		createLeftLeg(porygon);
 		createRightLeg(porygon);
 		createBody(porygon);
 		createTail(porygon);
 		createHead(porygon);
+		createBeak(porygon);
 		return porygon;
 	}
 	
@@ -607,8 +610,8 @@ public class PolymeshFactory {
 		//bottom front
 		Polygon pol42 = new Polygon();
 		Point p13 = new Point(-40, 45, 60);
-		Edge e16 = new Edge(p12, p13);
-		Edge e17 = new Edge(p1, p13);
+		Edge e16 = new Edge(p12, p13, Color.PINK);
+		Edge e17 = new Edge(p1, p13, Color.PINK);
 		pol42.addEdge(e14);
 		pol42.addEdge(e16);
 		pol42.addEdge(e17);
@@ -675,5 +678,59 @@ public class PolymeshFactory {
 		pol47.addEdge(e18);
 		pol47.addEdge(e16);
 		porygon.addPolygon(pol47);
+	}
+	
+	private static void createBeak(Polymesh porygon) {
+		//top
+		Point p1 = new Point(-40, 62, 10);
+		Point p2 = new Point(-35, 79, 45);
+		Point p3 = new Point(35, 79, 45);
+		Point p4 = new Point(40, 62, 10);
+		Edge e1 = new Edge(p1, p2);
+		Edge e2 = new Edge(p2, p3);
+		Edge e3 = new Edge(p3, p4);
+		porygon.addCorner(p1);
+		porygon.addCorner(p2);
+		porygon.addCorner(p3);
+		porygon.addCorner(p4);
+		porygon.addEdge(e1);
+		porygon.addEdge(e2);
+		porygon.addEdge(e3);
+		//mid
+		Point p5 = new Point(-40, 60, 10);
+		Point p6 = new Point(-40, 73, 45);
+		Point p7 = new Point(40, 73, 45);
+		Point p8 = new Point(40, 60, 10);
+		Edge e4 = new Edge(p5, p6);
+		Edge e5 = new Edge(p6, p7);
+		Edge e6 = new Edge(p7, p8);
+		porygon.addCorner(p5);
+		porygon.addCorner(p6);
+		porygon.addCorner(p7);
+		porygon.addCorner(p8);
+		porygon.addEdge(e4);
+		porygon.addEdge(e5);
+		porygon.addEdge(e6);
+		//bottom
+		Point p10 = new Point(-40, 50, 45);
+		Point p11 = new Point(40, 50, 45);
+		Edge e7 = new Edge(p5, p10);
+		Edge e8 = new Edge(p10, p11);
+		Edge e9 = new Edge(p11, p8);
+		porygon.addCorner(p10);
+		porygon.addCorner(p11);
+		porygon.addEdge(e7);
+		porygon.addEdge(e8);
+		porygon.addEdge(e9);
+		//right
+		Edge e10 = new Edge(p2, p6);
+		Edge e11 = new Edge(p6, p10);
+		porygon.addEdge(e10);
+		porygon.addEdge(e11);
+		//left
+		Edge e12 = new Edge(p3, p7);
+		Edge e13 = new Edge(p7, p11);
+		porygon.addEdge(e12);
+		porygon.addEdge(e13);
 	}
 }
