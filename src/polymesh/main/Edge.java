@@ -52,9 +52,9 @@ public class Edge {
 		int y0 = initPoint.getSideProjection()[0][1];
 		int x1 = finalPoint.getSideProjection()[0][2];
 		int y1 = finalPoint.getSideProjection()[0][1];
-		x0 += Main.SMALL_PANEL_WIDTH / 2;
+		x0 += Main.SMALL_PANEL_WIDTH / 2 - 40;
 		y0 = Main.SMALL_PANEL_HEIGHT / 2 - y0;
-		x1 += Main.SMALL_PANEL_WIDTH / 2;
+		x1 += Main.SMALL_PANEL_WIDTH / 2 - 40;
 		y1 = Main.SMALL_PANEL_HEIGHT / 2 - y1;
 		Drawer.drawLine(g, x0, y0, x1, y1, Color.CYAN);
 	}
@@ -65,9 +65,9 @@ public class Edge {
 		int x1 = finalPoint.getTopProjection()[0][0];
 		int y1 = finalPoint.getTopProjection()[0][2];
 		x0 += Main.SMALL_PANEL_WIDTH / 2;
-		y0 = Main.SMALL_PANEL_HEIGHT / 2 - y0;
+		y0 = Main.SMALL_PANEL_HEIGHT / 2 - y0 + 40;
 		x1 += Main.SMALL_PANEL_WIDTH / 2;
-		y1 = Main.SMALL_PANEL_HEIGHT / 2 - y1;
+		y1 = Main.SMALL_PANEL_HEIGHT / 2 - y1 + 40;
 		Drawer.drawLine(g, x0, y0, x1, y1, Color.CYAN);
 	}
 }

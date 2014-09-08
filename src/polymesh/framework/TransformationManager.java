@@ -5,6 +5,9 @@ public class TransformationManager {
 	public static final double[] xAxis = new double[]{ 1, 0, 0 };
 	public static final double[] yAxis = new double[]{ 0, 1, 0 };
 	public static final double[] zAxis = new double[]{ 0, 0, 1 };
+	public static final double[] xyAxis = new double[]{ 0.7071, 0.7071, 0 };
+	public static final double[] xzAxis = new double[]{ 0.7071, 0, 0.7071 };
+	public static final double[] yzAxis = new double[]{ 0, 0.7071, 0.7071 };
 	public static final double scale = 0.5;
 	public static final double distance = 100;
 	
